@@ -56,6 +56,12 @@ Template.pw.rendered = function() {
 
       var word = sha1(service + '||' + pass + '||' + fileKey);
 
+      word = word.replace(/[A-z]/g, function(c, i) {
+        return i % 2 === 0 ?
+          c.toUpperCase() :
+          c;
+      });
+
       password.innerText = word;
 
     };
